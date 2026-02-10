@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MS Teams Exporter</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>MS Teams Exporter</h1>
+      <p class="subtitle">Export conversations to IRC format</p>
+    </header>
+
+    <main>
+      <div id="status" class="status">
+        <span class="status-icon">⚪</span>
+        <span id="status-text">Waiting...</span>
+      </div>
+
+      <div class="controls">
+        <button id="export-btn" class="btn btn-primary">
+          <span class="btn-icon">📥</span>
+          Export Visible
+        </button>
+
+        <button id="export-complete-btn" class="btn btn-primary">
+          <span class="btn-icon">🔄</span>
+          Complete Export
+        </button>
+
+        <button id="debug-btn" class="btn btn-secondary">
+          <span class="btn-icon">🔍</span>
+          Debug DOM
+        </button>
+      </div>
+
+      <div id="info-complete" class="info-box hidden">
+        <p><strong>Complete Export:</strong></p>
+        <p>Automatically scrolls to load all old messages in the conversation.</p>
+        <p>⏱️ May take several seconds for long conversations.</p>
+      </div>
+
+      <div id="progress-container" class="progress-container hidden">
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <p id="progress-text" class="progress-text">0 messages extracted</p>
+      </div>
+
+      <div id="results" class="results hidden">
+        <h3>Result</h3>
+        <p id="message-count">0 messages</p>
+        <button id="download-btn" class="btn btn-success">
+          <span class="btn-icon">💾</span>
+          Download File
+        </button>
+      </div>
+
+      <div id="error" class="error hidden">
+        <p id="error-text"></p>
+      </div>
+    </main>
+
+    <footer>
+      <small><span id="version"></span> - IRC format optimized for LLMs</small>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
