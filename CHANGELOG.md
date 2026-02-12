@@ -1,5 +1,28 @@
 # Changelog - MS Teams Chat Exporter
 
+## [0.1.1] - 2026-02-12
+
+### 🐛 Bugfixes
+
+- **Fixed timestamp extraction**: All messages were showing the same timestamp (current time) instead of their actual message time
+  - Now extracts Unix timestamps from `<time>` element's `id` attribute (`timestamp-{unix_ms}`)
+  - Properly handles numeric timestamps in milliseconds
+  - Fixes parsing fallback that was defaulting to `new Date()`
+
+### ✨ Improvements
+
+- **Message grouping**: Consecutive messages from the same author now reuse the previous timestamp for better visual grouping
+  - Messages without timestamps use whitespace padding to maintain alignment
+  - Improves readability in IRC-style output
+
+### 🔧 Technical Changes
+
+- Added debug logging for skipped messages and extraction issues
+- Improved `parseTeamsTimestamp()` to handle numeric Unix timestamps
+- Updated `formatMessage()` to track and reuse last known timestamp
+
+---
+
 ## [0.1.0] - 2026-02-10
 
 ### Initial Release
